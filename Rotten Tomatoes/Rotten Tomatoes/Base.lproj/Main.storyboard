@@ -7,7 +7,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="daM-uF-642">
             <objects>
-                <tabBarController id="TEh-PZ-xcJ" sceneMemberID="viewController">
+                <tabBarController id="TEh-PZ-xcJ" customClass="RTTabBarController" customModule="Rotten_Tomatoes" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="e8Z-Nh-pFm">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -15,7 +15,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="3EW-Qb-1kp" kind="relationship" relationship="viewControllers" id="nAl-GL-aew"/>
-                        <segue destination="Qc3-WY-JI7" kind="relationship" relationship="viewControllers" id="G7I-fa-B11"/>
+                        <segue destination="3EW-Qb-1kp" kind="relationship" relationship="viewControllers" id="3lt-qg-4Ke"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bgW-lJ-m3N" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -39,7 +39,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="efu-D9-Y1d" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-556" y="-301"/>
+            <point key="canvasLocation" x="-556" y="27"/>
         </scene>
         <!--Movie Table View Controller-->
         <scene sceneID="9S9-di-8bK">
@@ -68,55 +68,10 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tcc-sd-XJ9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="164" y="-301"/>
-        </scene>
-        <!--Movie Table View Controller-->
-        <scene sceneID="51n-20-2Sp">
-            <objects>
-                <tableViewController id="agE-l8-Ezv" customClass="MovieTableViewController" customModule="Rotten_Tomatoes" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="OCG-G6-BLp">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="jTt-92-I3H">
-                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jTt-92-I3H" id="zxy-Gd-gta">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="agE-l8-Ezv" id="SWw-kR-9Dg"/>
-                            <outlet property="delegate" destination="agE-l8-Ezv" id="ar4-aJ-Wzh"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" id="BfU-Fc-oHB"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="G27-0g-3I2" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="156" y="360"/>
-        </scene>
-        <!--DVD-->
-        <scene sceneID="5p8-2m-ENK">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Qc3-WY-JI7" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="DVD" id="G1O-eh-m4K"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="xnB-Qe-xhJ">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="agE-l8-Ezv" kind="relationship" relationship="rootViewController" id="ez1-36-qkh"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="s5k-yh-cFe" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-556" y="360"/>
+            <point key="canvasLocation" x="168" y="27"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="3lt-qg-4Ke"/>
+    </inferredMetricsTieBreakers>
 </document>

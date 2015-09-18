@@ -10,6 +10,12 @@ import UIKit
 
 class MovieTableViewController: UITableViewController {
 
+    enum DataType: Int {
+        case BoxOffice = 0, DVD
+    }
+    
+    var dataType: DataType?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -34,6 +40,10 @@ class MovieTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath);
         cell.textLabel?.text = "blah \(indexPath.row)";
         return cell;
+    }
+    
+    func setRTDataType(type: DataType) {
+        self.dataType = type;
     }
 }
 
