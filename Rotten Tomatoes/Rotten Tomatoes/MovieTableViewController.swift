@@ -15,12 +15,26 @@ class MovieTableViewController: UITableViewController {
     }
     
     var dataType: DataType?
+    var movies: NSArray?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        self.movies = NSArray()
+        
         tableView.registerClass(MovieTableViewCell.self, forCellReuseIdentifier: "cell");
+        
+        RTAPISupport.retrieveRTData(self.dataType!, successCallbackBlock: { (movies) -> Void in
+            if (movies != nil) {
+                self.movies = movies!
+                self.tableView.reloadData();
+            } else {
+                self.movies = []
+            }
+            }) { (error) -> Void in
+                //
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -33,12 +47,22 @@ class MovieTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10;
+        if (self.movies != nil) {
+            return self.movies!.count
+        } else {
+            return 0;
+        }
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath);
-        cell.textLabel?.text = "blah \(indexPath.row)";
+        
+        if let movie = self.movies![indexPath.row] as? NSDictionary {
+            if let title = movie[RTDataConstants.title] as? String {
+                cell.textLabel?.text = title
+            }
+        }
+        
         return cell;
     }
     

@@ -11,7 +11,7 @@ import AFNetworking
 
 class RTAPISupport : NSObject {
     
-    class func retrieveRTData(typeOfData: MovieTableViewController.DataType, successCallbackBlock: NSDictionary -> Void, failureCallbackBlock: NSError? -> Void) {
+    class func retrieveRTData(typeOfData: MovieTableViewController.DataType, successCallbackBlock: NSArray? -> Void, failureCallbackBlock: NSError? -> Void) {
         var url = "";
         switch typeOfData {
         case MovieTableViewController.DataType.BoxOffice:
@@ -31,7 +31,11 @@ class RTAPISupport : NSObject {
                         if let json = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions(rawValue: 0)) as? NSDictionary {
                             // extract movies from JSON here and assign it to class variable
                             print(json)
-                            successCallbackBlock(json)
+                            if let movies = json[RTDataConstants.movies] as? NSArray {
+                                successCallbackBlock(movies)
+                            } else {
+                                successCallbackBlock(nil)
+                            }
                         }
                         
                     } catch {
