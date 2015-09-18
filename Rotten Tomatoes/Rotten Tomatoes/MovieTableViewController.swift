@@ -25,16 +25,11 @@ class MovieTableViewController: UITableViewController {
         
         tableView.registerClass(MovieTableViewCell.self, forCellReuseIdentifier: "cell");
         
-        RTAPISupport.retrieveRTData(self.dataType!, successCallbackBlock: { (movies) -> Void in
-            if (movies != nil) {
-                self.movies = movies!
-                self.tableView.reloadData();
-            } else {
-                self.movies = []
-            }
-            }) { (error) -> Void in
-                //
-        }
+        self.refreshControl = UIRefreshControl()
+        self.refreshControl!.addTarget(self, action: "onRefresh", forControlEvents: .ValueChanged)
+        self.tableView.insertSubview(self.refreshControl!, atIndex: 0)
+        
+        self.loadMovies()
     }
 
     override func didReceiveMemoryWarning() {
@@ -68,6 +63,24 @@ class MovieTableViewController: UITableViewController {
     
     func setRTDataType(type: DataType) {
         self.dataType = type;
+    }
+    
+    func loadMovies() {
+        RTAPISupport.retrieveRTData(self.dataType!, successCallbackBlock: { (movies) -> Void in
+            if (movies != nil) {
+                self.movies = movies!
+                self.tableView.reloadData();
+            } else {
+                self.movies = []
+            }
+            self.refreshControl?.endRefreshing()
+            }) { (error) -> Void in
+                self.refreshControl?.endRefreshing()
+        }
+    }
+    
+    func onRefresh() {
+        self.loadMovies();
     }
 }
 
