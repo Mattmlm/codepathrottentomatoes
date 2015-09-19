@@ -17,6 +17,10 @@ class MovieTableViewCell: UITableViewCell {
     
     var movieCoverURL: String?
     
+    override func prepareForReuse() {
+        self.movieCoverImageView.image = nil;
+        super.prepareForReuse()
+    }
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
