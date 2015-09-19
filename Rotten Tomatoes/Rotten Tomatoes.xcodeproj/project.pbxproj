@@ -10,6 +10,7 @@
 		1595F021EC0945F089E3EDB5 /* Pods_Rotten_Tomatoes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD151FD5B6ED0620C7C5EFBB /* Pods_Rotten_Tomatoes.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		848509781BAC98E200B89D39 /* RTTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848509771BAC98E200B89D39 /* RTTabBarController.swift */; settings = {ASSET_TAGS = (); }; };
 		8485097A1BACC47800B89D39 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848509791BACC47800B89D39 /* Constants.swift */; settings = {ASSET_TAGS = (); }; };
+		8485097C1BACCD8A00B89D39 /* MovieDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8485097B1BACCD8A00B89D39 /* MovieDetailsViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		84C242501BA7CC860050707F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C2424F1BA7CC860050707F /* AppDelegate.swift */; };
 		84C242521BA7CC860050707F /* MovieTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C242511BA7CC860050707F /* MovieTableViewController.swift */; };
 		84C242551BA7CC860050707F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84C242531BA7CC860050707F /* Main.storyboard */; };
@@ -22,6 +23,7 @@
 /* Begin PBXFileReference section */
 		848509771BAC98E200B89D39 /* RTTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTTabBarController.swift; sourceTree = "<group>"; };
 		848509791BACC47800B89D39 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		8485097B1BACCD8A00B89D39 /* MovieDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieDetailsViewController.swift; sourceTree = "<group>"; };
 		84C2424C1BA7CC860050707F /* Rotten Tomatoes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Rotten Tomatoes.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		84C2424F1BA7CC860050707F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84C242511BA7CC860050707F /* MovieTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTableViewController.swift; sourceTree = "<group>"; };
@@ -81,6 +83,7 @@
 				84C242531BA7CC860050707F /* Main.storyboard */,
 				84C242511BA7CC860050707F /* MovieTableViewController.swift */,
 				84C242611BA8DD810050707F /* MovieTableViewCell.swift */,
+				8485097B1BACCD8A00B89D39 /* MovieDetailsViewController.swift */,
 				84FDF1B11BAA2F46008494EC /* RTAPISupport.swift */,
 				848509771BAC98E200B89D39 /* RTTabBarController.swift */,
 				84C242561BA7CC860050707F /* Assets.xcassets */,
@@ -224,6 +227,7 @@
 				848509781BAC98E200B89D39 /* RTTabBarController.swift in Sources */,
 				84C242521BA7CC860050707F /* MovieTableViewController.swift in Sources */,
 				84C242501BA7CC860050707F /* AppDelegate.swift in Sources */,
+				8485097C1BACCD8A00B89D39 /* MovieDetailsViewController.swift in Sources */,
 				84FDF1B21BAA2F46008494EC /* RTAPISupport.swift in Sources */,
 				84C242621BA8DD810050707F /* MovieTableViewCell.swift in Sources */,
 				8485097A1BACC47800B89D39 /* Constants.swift in Sources */,

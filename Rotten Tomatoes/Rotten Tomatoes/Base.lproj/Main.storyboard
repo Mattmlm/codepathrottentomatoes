@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="TEh-PZ-xcJ">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Tab Bar Controller-->
@@ -50,13 +51,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="adR-hk-GCh">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="adR-hk-GCh" customClass="MovieTableViewCell" customModule="Rotten_Tomatoes" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="92" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="adR-hk-GCh" id="Ei3-Q8-VYW">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="qX0-e2-xbS" kind="show" identifier="showMovieDetails" id="1Vh-Wx-XJh"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -69,6 +73,50 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tcc-sd-XJ9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="168" y="27"/>
+        </scene>
+        <!--Movie Details View Controller-->
+        <scene sceneID="3hg-Cx-IOk">
+            <objects>
+                <viewController id="qX0-e2-xbS" customClass="MovieDetailsViewController" customModule="Rotten_Tomatoes" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ZQk-vu-4IG"/>
+                        <viewControllerLayoutGuide type="bottom" id="s9g-9Q-ms2"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Roy-cN-y95">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1bA-Z4-R3b">
+                                <rect key="frame" x="20" y="64" width="560" height="487"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SVp-mU-Qpp">
+                                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.45098039220000002" green="0.96470588239999999" blue="0.78039215689999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="SVp-mU-Qpp" secondAttribute="trailing" id="0lp-7v-nUE"/>
+                                    <constraint firstItem="SVp-mU-Qpp" firstAttribute="leading" secondItem="1bA-Z4-R3b" secondAttribute="leading" id="Aaj-Uw-adL"/>
+                                    <constraint firstItem="SVp-mU-Qpp" firstAttribute="top" secondItem="1bA-Z4-R3b" secondAttribute="top" id="gre-ks-4rV"/>
+                                    <constraint firstAttribute="bottom" secondItem="SVp-mU-Qpp" secondAttribute="bottom" constant="242" id="wMz-RV-2L1"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="1bA-Z4-R3b" secondAttribute="trailing" id="Avr-PP-G3c"/>
+                            <constraint firstItem="s9g-9Q-ms2" firstAttribute="top" secondItem="1bA-Z4-R3b" secondAttribute="bottom" id="J23-ol-2Dj"/>
+                            <constraint firstItem="1bA-Z4-R3b" firstAttribute="top" secondItem="ZQk-vu-4IG" secondAttribute="bottom" id="SD6-Xp-ZPE"/>
+                            <constraint firstItem="1bA-Z4-R3b" firstAttribute="leading" secondItem="Roy-cN-y95" secondAttribute="leadingMargin" id="gGm-Nx-Wl8"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="movieCoverView" destination="SVp-mU-Qpp" id="DJD-OF-iVt"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gDe-qo-8bx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="914" y="27"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

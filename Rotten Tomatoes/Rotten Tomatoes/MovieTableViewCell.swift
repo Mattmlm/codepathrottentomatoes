@@ -7,15 +7,27 @@
 //
 
 import UIKit
+import AFNetworking
 
 class MovieTableViewCell: UITableViewCell {
-
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    
+    @IBOutlet weak var movieCoverImageView: UIImageView?
+    
+    var movieCoverURL: String?
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        // Initialization code
     }
     
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
+    override func setSelected(selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+        
+        // Configure the view for the selected state
+    }
+    
+    func setMovieCover(imageURL: String) {
+        self.movieCoverImageView?.setImageWithURL(NSURL(string: imageURL)!)
     }
 }
 

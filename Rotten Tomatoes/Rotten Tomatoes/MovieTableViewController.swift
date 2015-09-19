@@ -51,14 +51,23 @@ class MovieTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath);
-        
-        if let movie = self.movies![indexPath.row] as? NSDictionary {
-            if let title = movie[RTDataConstants.title] as? String {
-                cell.textLabel?.text = title
+        if let movieCell = cell as? MovieTableViewCell {
+            if let movie = self.movies![indexPath.row] as? NSDictionary {
+                if let title = movie[RTDataConstants.title] as? String {
+                    movieCell.textLabel?.text = title
+                    if let coverURL = movie[RTDataConstants.movieCover] as? NSDictionary {
+                        movieCell.movieCoverURL = coverURL[RTDataConstants.movieCoverOriginal] as? String
+                    }
+                }
             }
         }
         
         return cell;
+    }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        performSegueWithIdentifier("showMovieDetails", sender: self)
+        tableView.deselectRowAtIndexPath(indexPath, animated: true);
     }
     
     func setRTDataType(type: DataType) {
@@ -81,6 +90,17 @@ class MovieTableViewController: UITableViewController {
     
     func onRefresh() {
         self.loadMovies();
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        // testing
+        if let movieDetailsVC = segue.destinationViewController as? MovieDetailsViewController {
+            if let movieData = self.movies?[(self.tableView.indexPathForSelectedRow?.row)!] {
+                if let movieURLs = movieData[RTDataConstants.movieCover] as? NSDictionary {
+                    movieDetailsVC.movieCoverURL = movieURLs[RTDataConstants.movieCoverOriginal] as? String;
+                }
+            }
+        }
     }
 }
 
