@@ -11,4 +11,5 @@ struct RTDataConstants {
     static let title = "title"
     static let movieCover = "posters"
     static let movieCoverOriginal = "original"
+    static let synopsis = "synopsis"
 }

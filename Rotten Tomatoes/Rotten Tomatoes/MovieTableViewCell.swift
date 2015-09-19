@@ -29,7 +29,12 @@ class MovieTableViewCell: UITableViewCell {
     }
     
     func setMovieCover(imageURL: String) {
-        self.movieCoverImageView?.setImageWithURL(NSURL(string: imageURL)!)
+        var url = imageURL;
+        let range = url.rangeOfString(".*cloudfront.net/", options: .RegularExpressionSearch)
+        if let range = range {
+            url = url.stringByReplacingCharactersInRange(range, withString: "https://content6.flixster.com/")
+        }
+        self.movieCoverImageView?.setImageWithURL(NSURL(string: url)!)
     }
 }
 

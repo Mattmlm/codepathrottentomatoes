@@ -54,12 +54,15 @@ class MovieTableViewController: UITableViewController {
             if let movie = self.movies![indexPath.row] as? NSDictionary {
                 if let title = movie[RTDataConstants.title] as? String {
                     movieCell.movieTitleLabel.text = title
-                    if let coverURL = movie[RTDataConstants.movieCover] as? NSDictionary {
-                        if let url = coverURL[RTDataConstants.movieCoverOriginal] as? String {
-                            movieCell.movieCoverURL = url;
-                            movieCell.setMovieCover(url);
-                        }
+                }
+                if let coverURL = movie[RTDataConstants.movieCover] as? NSDictionary {
+                    if let url = coverURL[RTDataConstants.movieCoverOriginal] as? String {
+                        movieCell.movieCoverURL = url;
+                        movieCell.setMovieCover(url);
                     }
+                }
+                if let description = movie[RTDataConstants.synopsis] as? String {
+                    movieCell.movieDescriptionLabel.text = description;
                 }
             }
         }
