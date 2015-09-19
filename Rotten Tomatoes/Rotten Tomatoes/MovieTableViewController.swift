@@ -23,7 +23,6 @@ class MovieTableViewController: UITableViewController {
         
         self.movies = NSArray()
         
-        tableView.registerClass(MovieTableViewCell.self, forCellReuseIdentifier: "cell");
         
         self.refreshControl = UIRefreshControl()
         self.refreshControl!.addTarget(self, action: "onRefresh", forControlEvents: .ValueChanged)
@@ -50,13 +49,16 @@ class MovieTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath);
+        let cell = tableView.dequeueReusableCellWithIdentifier("Movie Cell", forIndexPath: indexPath);
         if let movieCell = cell as? MovieTableViewCell {
             if let movie = self.movies![indexPath.row] as? NSDictionary {
                 if let title = movie[RTDataConstants.title] as? String {
-                    movieCell.textLabel?.text = title
+                    movieCell.movieTitleLabel.text = title
                     if let coverURL = movie[RTDataConstants.movieCover] as? NSDictionary {
-                        movieCell.movieCoverURL = coverURL[RTDataConstants.movieCoverOriginal] as? String
+                        if let url = coverURL[RTDataConstants.movieCoverOriginal] as? String {
+                            movieCell.movieCoverURL = url;
+                            movieCell.setMovieCover(url);
+                        }
                     }
                 }
             }

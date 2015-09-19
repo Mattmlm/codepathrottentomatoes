@@ -11,7 +11,9 @@ import AFNetworking
 
 class MovieTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var movieCoverImageView: UIImageView?
+    @IBOutlet weak var movieCoverImageView: UIImageView!
+    @IBOutlet weak var movieTitleLabel: UILabel!
+    @IBOutlet weak var movieDescriptionLabel: UILabel!
     
     var movieCoverURL: String?
     
