@@ -134,7 +134,6 @@
                                         <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     </imageView>
                                 </subviews>
-                                <color key="backgroundColor" red="0.45098039220000002" green="0.96470588239999999" blue="0.78039215689999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="SVp-mU-Qpp" secondAttribute="trailing" id="0lp-7v-nUE"/>
                                     <constraint firstItem="SVp-mU-Qpp" firstAttribute="leading" secondItem="1bA-Z4-R3b" secondAttribute="leading" id="Aaj-Uw-adL"/>
