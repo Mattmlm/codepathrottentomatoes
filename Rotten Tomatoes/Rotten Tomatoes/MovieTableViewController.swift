@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MBProgressHUD
 
 class MovieTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
@@ -31,8 +32,8 @@ class MovieTableViewController: UIViewController, UITableViewDataSource, UITable
         self.movieTableView.dataSource = self;
         
         self.refreshControl.addTarget(self, action: "onRefresh", forControlEvents: .ValueChanged)
+        self.refreshControl.tintColor = UIColor.whiteColor()
         self.movieTableView.insertSubview(self.refreshControl, atIndex: 0)
-        
         self.loadMovies()
     }
 
@@ -81,8 +82,26 @@ class MovieTableViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     func loadMovies() {
+        MBProgressHUD.showHUDAddedTo(self.view, animated: true);
         RTAPISupport.retrieveRTData(self.dataType!, successCallbackBlock: { (movies) -> Void in
             self.errorView.hidden = true;
+            MBProgressHUD.hideHUDForView(self.view, animated: true);
+            if (movies != nil) {
+                self.movies = movies!
+                self.movieTableView.reloadData();
+            } else {
+                self.movies = []
+            }
+            }) { (error) -> Void in
+                self.errorView.hidden = false;
+                MBProgressHUD.hideHUDForView(self.view, animated: true);
+        }
+    }
+    
+    func onRefresh() {
+        RTAPISupport.retrieveRTData(self.dataType!, successCallbackBlock: { (movies) -> Void in
+            self.errorView.hidden = true;
+            MBProgressHUD.hideHUDForView(self.view, animated: true);
             if (movies != nil) {
                 self.movies = movies!
                 self.movieTableView.reloadData();
@@ -96,8 +115,6 @@ class MovieTableViewController: UIViewController, UITableViewDataSource, UITable
         }
     }
     
-    func onRefresh() {
-        self.loadMovies();
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
