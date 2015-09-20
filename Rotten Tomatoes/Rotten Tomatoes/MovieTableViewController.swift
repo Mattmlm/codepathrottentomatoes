@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  MovieTableViewController.swift
 //  Rotten Tomatoes
 //
 //  Created by admin on 9/14/15.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MovieTableViewController: UITableViewController {
+class MovieTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     enum DataType: Int {
         case BoxOffice = 0, DVD
@@ -16,6 +16,9 @@ class MovieTableViewController: UITableViewController {
     
     var dataType: DataType?
     var movies: NSArray?
+    var refreshControl: UIRefreshControl = UIRefreshControl()
+    
+    @IBOutlet weak var movieTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,10 +26,11 @@ class MovieTableViewController: UITableViewController {
         
         self.movies = NSArray()
         
+        self.movieTableView.delegate = self;
+        self.movieTableView.dataSource = self;
         
-        self.refreshControl = UIRefreshControl()
-        self.refreshControl!.addTarget(self, action: "onRefresh", forControlEvents: .ValueChanged)
-        self.tableView.insertSubview(self.refreshControl!, atIndex: 0)
+        self.refreshControl.addTarget(self, action: "onRefresh", forControlEvents: .ValueChanged)
+        self.movieTableView.insertSubview(self.refreshControl, atIndex: 0)
         
         self.loadMovies()
     }
@@ -36,11 +40,11 @@ class MovieTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1;
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if (self.movies != nil) {
             return self.movies!.count
         } else {
@@ -48,7 +52,7 @@ class MovieTableViewController: UITableViewController {
         }
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Movie Cell", forIndexPath: indexPath);
         if let movieCell = cell as? MovieTableViewCell {
             if let movie = self.movies![indexPath.row] as? NSDictionary {
@@ -67,7 +71,7 @@ class MovieTableViewController: UITableViewController {
         return cell;
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true);
     }
     
@@ -79,13 +83,13 @@ class MovieTableViewController: UITableViewController {
         RTAPISupport.retrieveRTData(self.dataType!, successCallbackBlock: { (movies) -> Void in
             if (movies != nil) {
                 self.movies = movies!
-                self.tableView.reloadData();
+                self.movieTableView.reloadData();
             } else {
                 self.movies = []
             }
-            self.refreshControl?.endRefreshing()
+            self.refreshControl.endRefreshing()
             }) { (error) -> Void in
-                self.refreshControl?.endRefreshing()
+                self.refreshControl.endRefreshing()
         }
     }
     
@@ -98,7 +102,7 @@ class MovieTableViewController: UITableViewController {
         // If segue is for movie cells
         if (segue.identifier == "showMovieDetails") {
             if let movieDetailsVC = segue.destinationViewController as? MovieDetailsViewController {
-                if let movieData = self.movies?[(self.tableView.indexPathForSelectedRow?.row)!] as? NSDictionary {
+                if let movieData = self.movies?[(self.movieTableView.indexPathForSelectedRow?.row)!] as? NSDictionary {
                     movieDetailsVC.movieData = movieData;
                 }
             }
