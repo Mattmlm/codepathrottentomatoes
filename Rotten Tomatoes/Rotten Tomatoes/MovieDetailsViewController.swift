@@ -9,31 +9,33 @@
 import UIKit
 
 class MovieDetailsViewController: UIViewController {
-
-    var movieCoverURL: String?
-    var movieDetails: String?
-    var movieData: NSDictionary?
     
+    var movieData: NSDictionary?
+
     @IBOutlet weak var movieCoverView: UIImageView!
+    @IBOutlet weak var movieTitleLabel: UILabel!
+    @IBOutlet weak var movieDetailsLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.movieCoverView.setImageWithURL(NSURL(string: self.getBigPictureURL(self.movieCoverURL!))!)
+        
+        if self.movieData != nil {
+            if let url = RTAPISupport.getMovieBigImageURL(self.movieData!) {
+                self.movieCoverView.setImageWithURL(NSURL(string: url)!)
+            }
+            if let title = RTAPISupport.getMovieTitle(self.movieData!) {
+                self.movieTitleLabel.text = title;
+            }
+            if let description = RTAPISupport.getMovieSynopsis(self.movieData!) {
+                self.movieDetailsLabel.text = description;
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-
-    func getBigPictureURL(miniURL: String) -> String {
-        var url = miniURL;
-        let range = url.rangeOfString(".*cloudfront.net/", options: .RegularExpressionSearch)
-        if let range = range {
-            url = url.stringByReplacingCharactersInRange(range, withString: "https://content6.flixster.com/")
-        }
-        return url
     }
 }
