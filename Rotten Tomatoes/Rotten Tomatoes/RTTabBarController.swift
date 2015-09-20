@@ -25,14 +25,18 @@ class RTTabBarController: UITabBarController {
                         movieController.setRTDataType(MovieTableViewController.DataType.BoxOffice)
                         tabItem.title = "Box Office"
                         tabItem.image = UIImage(named: "clapper");
+                        movieController.navigationItem.title = "Box Office"
                     case MovieTableViewController.DataType.DVD.rawValue:
                         movieController.setRTDataType(MovieTableViewController.DataType.DVD)
                         tabItem.title = "DVD"
                         tabItem.image = UIImage(named: "disc");
+                        movieController.navigationItem.title = "DVD"
                     default:
                         movieController.setRTDataType(MovieTableViewController.DataType.BoxOffice)
                         tabItem.title = "Box Office"
                         tabItem.image = UIImage(named: "clapper");
+                        navigationController.title = "Box Office"
+                        movieController.navigationItem.title = "Box Office"
                     }
                 }
             }

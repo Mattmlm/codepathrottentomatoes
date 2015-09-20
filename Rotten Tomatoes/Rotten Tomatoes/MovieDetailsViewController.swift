@@ -18,6 +18,8 @@ class MovieDetailsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.navigationController?.navigationBar.tintColor = UIColor.blackColor()
 
         // Do any additional setup after loading the view.
         
@@ -27,6 +29,7 @@ class MovieDetailsViewController: UIViewController {
             }
             if let title = RTAPISupport.getMovieTitle(self.movieData!) {
                 self.movieTitleLabel.text = title;
+                self.navigationItem.title = title;
             }
             if let description = RTAPISupport.getMovieSynopsis(self.movieData!) {
                 self.movieDetailsLabel.text = description;
