@@ -15,11 +15,9 @@ class MovieTableViewCell: UITableViewCell {
     @IBOutlet weak var movieTitleLabel: UILabel!
     @IBOutlet weak var movieDescriptionLabel: UILabel!
     
-    var movieCoverURL: String?
-    
     override func prepareForReuse() {
-        self.movieCoverImageView.image = nil;
         super.prepareForReuse()
+        self.movieCoverImageView.image = nil;
     }
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -33,12 +31,7 @@ class MovieTableViewCell: UITableViewCell {
     }
     
     func setMovieCover(imageURL: String) {
-        var url = imageURL;
-        let range = url.rangeOfString(".*cloudfront.net/", options: .RegularExpressionSearch)
-        if let range = range {
-            url = url.stringByReplacingCharactersInRange(range, withString: "https://content6.flixster.com/")
-        }
-        self.movieCoverImageView?.setImageWithURL(NSURL(string: url)!)
+        self.movieCoverImageView?.setImageWithURL(NSURL(string: imageURL)!)
     }
 }
 

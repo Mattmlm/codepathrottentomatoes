@@ -12,6 +12,8 @@ class MovieDetailsViewController: UIViewController {
 
     var movieCoverURL: String?
     var movieDetails: String?
+    var movieData: NSDictionary?
+    
     @IBOutlet weak var movieCoverView: UIImageView!
     
     override func viewDidLoad() {

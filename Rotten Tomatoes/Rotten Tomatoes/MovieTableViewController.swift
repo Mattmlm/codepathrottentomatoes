@@ -52,16 +52,13 @@ class MovieTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("Movie Cell", forIndexPath: indexPath);
         if let movieCell = cell as? MovieTableViewCell {
             if let movie = self.movies![indexPath.row] as? NSDictionary {
-                if let title = movie[RTDataConstants.title] as? String {
+                if let title = RTAPISupport.getMovieTitle(movie) {
                     movieCell.movieTitleLabel.text = title
                 }
-                if let coverURL = movie[RTDataConstants.movieCover] as? NSDictionary {
-                    if let url = coverURL[RTDataConstants.movieCoverOriginal] as? String {
-                        movieCell.movieCoverURL = url;
-                        movieCell.setMovieCover(url);
-                    }
+                if let url = RTAPISupport.getMovieBigImageURL(movie) {
+                    movieCell.setMovieCover(url);
                 }
-                if let description = movie[RTDataConstants.synopsis] as? String {
+                if let description = RTAPISupport.getMovieSynopsis(movie) {
                     movieCell.movieDescriptionLabel.text = description;
                 }
             }
@@ -97,11 +94,12 @@ class MovieTableViewController: UITableViewController {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // testing
-        if let movieDetailsVC = segue.destinationViewController as? MovieDetailsViewController {
-            if let movieData = self.movies?[(self.tableView.indexPathForSelectedRow?.row)!] {
-                if let movieURLs = movieData[RTDataConstants.movieCover] as? NSDictionary {
-                    movieDetailsVC.movieCoverURL = movieURLs[RTDataConstants.movieCoverOriginal] as? String;
+        
+        // If segue is for movie cells
+        if (segue.identifier == "showMovieDetails") {
+            if let movieDetailsVC = segue.destinationViewController as? MovieDetailsViewController {
+                if let movieData = self.movies?[(self.tableView.indexPathForSelectedRow?.row)!] as? NSDictionary {
+                    movieDetailsVC.movieData = movieData;
                 }
             }
         }
