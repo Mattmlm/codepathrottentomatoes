@@ -29,7 +29,8 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="3EW-Qb-1kp" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Box Office" id="VVn-QQ-P63"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="qoV-bB-4Br">
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="qoV-bB-4Br">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -51,15 +52,15 @@
                         <viewControllerLayoutGuide type="bottom" id="0VB-nZ-Uuz"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="TqX-0M-tAi">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="176" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="um6-Ty-XMO">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Movie Cell" rowHeight="176" id="bcl-Qi-1fK" customClass="MovieTableViewCell" customModule="Rotten_Tomatoes" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="92" width="600" height="176"/>
+                                        <rect key="frame" x="0.0" y="28" width="600" height="176"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bcl-Qi-1fK" id="wWi-w7-9Ef">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="175.5"/>
@@ -106,17 +107,45 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TNO-oM-Psg" userLabel="Error View">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="50"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Network Error" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rlc-vN-Fad" userLabel="Error Label">
+                                        <rect key="frame" x="247" y="15" width="106.5" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="3g3-l3-brr"/>
+                                    <constraint firstItem="rlc-vN-Fad" firstAttribute="centerY" secondItem="TNO-oM-Psg" secondAttribute="centerY" id="QY8-z7-qDU"/>
+                                    <constraint firstItem="rlc-vN-Fad" firstAttribute="centerX" secondItem="TNO-oM-Psg" secondAttribute="centerX" id="Xsn-ll-trU"/>
+                                </constraints>
+                            </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="TNO-oM-Psg" firstAttribute="top" secondItem="um6-Ty-XMO" secondAttribute="top" id="8js-aT-R6R"/>
+                            <constraint firstAttribute="trailing" secondItem="TNO-oM-Psg" secondAttribute="trailing" id="CBx-8e-89L"/>
+                            <constraint firstItem="TNO-oM-Psg" firstAttribute="leading" secondItem="TqX-0M-tAi" secondAttribute="leading" id="DET-do-8wl"/>
                             <constraint firstItem="um6-Ty-XMO" firstAttribute="leading" secondItem="TqX-0M-tAi" secondAttribute="leading" id="Kdc-nL-qFp"/>
+                            <constraint firstItem="TNO-oM-Psg" firstAttribute="top" secondItem="TqX-0M-tAi" secondAttribute="topMargin" id="OjI-sT-F36"/>
                             <constraint firstItem="um6-Ty-XMO" firstAttribute="top" secondItem="TqX-0M-tAi" secondAttribute="topMargin" id="PMi-Y7-5x4"/>
                             <constraint firstAttribute="trailing" secondItem="um6-Ty-XMO" secondAttribute="trailing" id="dx7-tC-0UI"/>
                             <constraint firstAttribute="bottomMargin" secondItem="um6-Ty-XMO" secondAttribute="bottom" id="iJF-Vy-DuQ"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="OjI-sT-F36"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="Bni-Zk-2Yl"/>
                     <connections>
+                        <outlet property="errorView" destination="TNO-oM-Psg" id="yei-lO-pju"/>
                         <outlet property="movieTableView" destination="um6-Ty-XMO" id="EVV-wM-tg0"/>
                     </connections>
                 </viewController>
@@ -133,15 +162,15 @@
                         <viewControllerLayoutGuide type="bottom" id="s9g-9Q-ms2"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Roy-cN-y95">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SVp-mU-Qpp" userLabel="Movie Cover Image View">
-                                <rect key="frame" x="0.0" y="-49" width="600" height="600"/>
+                                <rect key="frame" x="0.0" y="-49" width="600" height="536"/>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </imageView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1bA-Z4-R3b">
-                                <rect key="frame" x="0.0" y="64" width="600" height="487"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="487"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nad-nu-ut3" userLabel="Content View">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="1000"/>
@@ -156,7 +185,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Roc-JV-4xL" userLabel="Details Label">
-                                                        <rect key="frame" x="10" y="40.5" width="580" height="17"/>
+                                                        <rect key="frame" x="10" y="40" width="580" height="17"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <nil key="highlightedColor"/>

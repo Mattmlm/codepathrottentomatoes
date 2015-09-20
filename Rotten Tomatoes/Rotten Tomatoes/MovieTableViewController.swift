@@ -19,6 +19,7 @@ class MovieTableViewController: UIViewController, UITableViewDataSource, UITable
     var refreshControl: UIRefreshControl = UIRefreshControl()
     
     @IBOutlet weak var movieTableView: UITableView!
+    @IBOutlet weak var errorView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -81,6 +82,7 @@ class MovieTableViewController: UIViewController, UITableViewDataSource, UITable
     
     func loadMovies() {
         RTAPISupport.retrieveRTData(self.dataType!, successCallbackBlock: { (movies) -> Void in
+            self.errorView.hidden = true;
             if (movies != nil) {
                 self.movies = movies!
                 self.movieTableView.reloadData();
@@ -89,6 +91,7 @@ class MovieTableViewController: UIViewController, UITableViewDataSource, UITable
             }
             self.refreshControl.endRefreshing()
             }) { (error) -> Void in
+                self.errorView.hidden = false;
                 self.refreshControl.endRefreshing()
         }
     }
