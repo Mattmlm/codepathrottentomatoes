@@ -113,8 +113,6 @@ class MovieTableViewController: UIViewController, UITableViewDataSource, UITable
         }
     }
     
-    }
-    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         // If segue is for movie cells
