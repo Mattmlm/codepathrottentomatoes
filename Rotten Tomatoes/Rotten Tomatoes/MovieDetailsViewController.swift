@@ -15,6 +15,7 @@ class MovieDetailsViewController: UIViewController {
     @IBOutlet weak var movieCoverView: UIImageView!
     @IBOutlet weak var movieTitleLabel: UILabel!
     @IBOutlet weak var movieDetailsLabel: UILabel!
+    @IBOutlet weak var movieRatingsLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +33,9 @@ class MovieDetailsViewController: UIViewController {
             if let title = RTAPISupport.getMovieTitle(self.movieData!) {
                 self.movieTitleLabel.text = title;
                 self.navigationItem.title = title;
+            }
+            if let ratings = RTAPISupport.getMovieRatings(self.movieData!) {
+                self.movieRatingsLabel.text = ratings;
             }
             if let description = RTAPISupport.getMovieSynopsis(self.movieData!) {
                 self.movieDetailsLabel.text = description;

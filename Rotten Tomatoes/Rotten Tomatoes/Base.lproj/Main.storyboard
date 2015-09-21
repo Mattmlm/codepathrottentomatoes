@@ -78,8 +78,14 @@
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ratings" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nee-8S-xU2" userLabel="Movie Ratings Label">
+                                                    <rect key="frame" x="142" y="43.5" width="51.5" height="18"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lorem Ipsum loream ipsum lorem ipsum" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QsB-LN-LFH" userLabel="Movie Description Label">
-                                                    <rect key="frame" x="142" y="48" width="440" height="17"/>
+                                                    <rect key="frame" x="142" y="71.5" width="440" height="17"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
@@ -90,17 +96,26 @@
                                                 <constraint firstItem="8Bj-fV-gpB" firstAttribute="top" secondItem="wWi-w7-9Ef" secondAttribute="top" constant="18" id="3Te-kq-LW3"/>
                                                 <constraint firstItem="kYm-bZ-TDb" firstAttribute="leading" secondItem="wWi-w7-9Ef" secondAttribute="leading" id="5hI-54-cpT"/>
                                                 <constraint firstItem="QsB-LN-LFH" firstAttribute="leading" secondItem="8Bj-fV-gpB" secondAttribute="leading" id="8VM-Yu-oWU"/>
+                                                <constraint firstItem="Nee-8S-xU2" firstAttribute="leading" secondItem="8Bj-fV-gpB" secondAttribute="leading" id="F0b-m1-5xw"/>
                                                 <constraint firstAttribute="trailing" secondItem="QsB-LN-LFH" secondAttribute="trailing" constant="18" id="LxY-u7-MsB"/>
+                                                <constraint firstItem="QsB-LN-LFH" firstAttribute="top" secondItem="Nee-8S-xU2" secondAttribute="bottom" constant="10" id="Mat-QF-RLk"/>
+                                                <constraint firstItem="Nee-8S-xU2" firstAttribute="top" secondItem="8Bj-fV-gpB" secondAttribute="bottom" constant="5" id="Rfa-hK-mXe"/>
                                                 <constraint firstItem="kYm-bZ-TDb" firstAttribute="top" secondItem="wWi-w7-9Ef" secondAttribute="top" id="TcE-fo-Tx2"/>
                                                 <constraint firstAttribute="bottom" secondItem="kYm-bZ-TDb" secondAttribute="bottom" id="hra-LW-H3x"/>
                                                 <constraint firstItem="8Bj-fV-gpB" firstAttribute="leading" secondItem="kYm-bZ-TDb" secondAttribute="trailing" constant="22" id="mAV-66-Vy0"/>
                                                 <constraint firstAttribute="trailing" secondItem="8Bj-fV-gpB" secondAttribute="trailing" constant="18" id="o8i-gN-itE"/>
                                                 <constraint firstItem="QsB-LN-LFH" firstAttribute="top" secondItem="8Bj-fV-gpB" secondAttribute="bottom" constant="10" id="rfU-hJ-lGk"/>
                                             </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="rfU-hJ-lGk"/>
+                                                </mask>
+                                            </variation>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="movieCoverImageView" destination="kYm-bZ-TDb" id="Yig-ai-EnJ"/>
                                             <outlet property="movieDescriptionLabel" destination="QsB-LN-LFH" id="cTc-87-S5R"/>
+                                            <outlet property="movieRatingLabel" destination="Nee-8S-xU2" id="Z1Z-9P-hPS"/>
                                             <outlet property="movieTitleLabel" destination="8Bj-fV-gpB" id="6uU-A6-gSe"/>
                                             <segue destination="qX0-e2-xbS" kind="show" identifier="showMovieDetails" id="mt2-zf-nU1"/>
                                         </connections>
@@ -185,22 +200,36 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Roc-JV-4xL" userLabel="Details Label">
-                                                        <rect key="frame" x="10" y="40" width="580" height="17"/>
+                                                        <rect key="frame" x="10" y="64" width="580" height="17"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ratings Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vVA-nF-bHP" userLabel="Ratings Label">
+                                                        <rect key="frame" x="10" y="36" width="93" height="18"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
+                                                    <constraint firstItem="Roc-JV-4xL" firstAttribute="top" secondItem="vVA-nF-bHP" secondAttribute="bottom" constant="10" id="GwR-lw-G0P"/>
+                                                    <constraint firstItem="vVA-nF-bHP" firstAttribute="top" secondItem="nmt-Qu-DEI" secondAttribute="bottom" constant="5" id="Hvc-er-Yb8"/>
                                                     <constraint firstItem="Roc-JV-4xL" firstAttribute="leading" secondItem="FKG-AT-ZFg" secondAttribute="leading" constant="10" id="LKz-nO-fKZ"/>
                                                     <constraint firstItem="nmt-Qu-DEI" firstAttribute="leading" secondItem="FKG-AT-ZFg" secondAttribute="leading" constant="10" id="Peo-bK-sPg"/>
                                                     <constraint firstItem="nmt-Qu-DEI" firstAttribute="top" secondItem="FKG-AT-ZFg" secondAttribute="top" constant="10" id="Y1o-ST-lVG"/>
                                                     <constraint firstAttribute="height" constant="600" id="iu2-I7-OAq"/>
+                                                    <constraint firstItem="vVA-nF-bHP" firstAttribute="leading" secondItem="nmt-Qu-DEI" secondAttribute="leading" id="pP6-ET-tDg"/>
                                                     <constraint firstAttribute="trailing" secondItem="nmt-Qu-DEI" secondAttribute="trailing" constant="10" id="tFL-Fy-owq"/>
                                                     <constraint firstAttribute="trailing" secondItem="Roc-JV-4xL" secondAttribute="trailing" constant="10" id="zEe-d0-qgy"/>
                                                     <constraint firstItem="Roc-JV-4xL" firstAttribute="top" secondItem="nmt-Qu-DEI" secondAttribute="bottom" constant="10" id="zra-cV-iyz"/>
                                                 </constraints>
+                                                <variation key="default">
+                                                    <mask key="constraints">
+                                                        <exclude reference="zra-cV-iyz"/>
+                                                    </mask>
+                                                </variation>
                                             </view>
                                         </subviews>
                                         <constraints>
@@ -237,6 +266,7 @@
                     <connections>
                         <outlet property="movieCoverView" destination="SVp-mU-Qpp" id="DJD-OF-iVt"/>
                         <outlet property="movieDetailsLabel" destination="Roc-JV-4xL" id="Ifg-XN-V6A"/>
+                        <outlet property="movieRatingsLabel" destination="vVA-nF-bHP" id="sKy-j9-t9v"/>
                         <outlet property="movieTitleLabel" destination="nmt-Qu-DEI" id="PDk-lM-blI"/>
                     </connections>
                 </viewController>

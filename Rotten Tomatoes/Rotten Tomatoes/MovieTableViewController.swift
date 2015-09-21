@@ -62,6 +62,9 @@ class MovieTableViewController: UIViewController, UITableViewDataSource, UITable
                 if let title = RTAPISupport.getMovieTitle(movie) {
                     movieCell.movieTitleLabel.text = title
                 }
+                if let ratings = RTAPISupport.getMovieRatings(movie) {
+                    movieCell.movieRatingLabel.text = ratings;
+                }
                 if let description = RTAPISupport.getMovieSynopsis(movie) {
                     movieCell.movieDescriptionLabel.text = description;
                 }

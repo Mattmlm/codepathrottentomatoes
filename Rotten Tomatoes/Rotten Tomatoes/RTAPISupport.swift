@@ -15,6 +15,9 @@ struct RTDataConstants {
     static let movieCover = "posters"
     static let movieCoverOriginal = "original"
     static let synopsis = "synopsis"
+    static let ratings = "ratings"
+    static let audienceScore = "audience_score"
+    static let criticsScore = "critics_score"
 }
 
 class RTAPISupport : NSObject {
@@ -66,6 +69,19 @@ class RTAPISupport : NSObject {
             return title
         }
         return nil
+    }
+    
+    class func getMovieRatings(data:NSDictionary) -> String? {
+        var ratingsText = ""
+        if let ratings = data[RTDataConstants.ratings] as? NSDictionary {
+            if let audience = ratings[RTDataConstants.audienceScore] as? Int {
+                ratingsText =  ratingsText + "Audience Score: \(audience) "
+            }
+            if let critics = ratings[RTDataConstants.criticsScore] as? Int {
+                ratingsText = ratingsText + "Critics Score: \(critics)";
+            }
+        }
+        return ratingsText
     }
     
     class func getMovieSynopsis(data: NSDictionary) -> String? {

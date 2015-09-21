@@ -13,6 +13,7 @@ class MovieTableViewCell: UITableViewCell {
     @IBOutlet weak var movieCoverImageView: UIImageView!
     @IBOutlet weak var movieTitleLabel: UILabel!
     @IBOutlet weak var movieDescriptionLabel: UILabel!
+    @IBOutlet weak var movieRatingLabel: UILabel!
     
     override func prepareForReuse() {
         super.prepareForReuse()
