@@ -21,6 +21,11 @@ Time spent: Around... 15 hours
 - [x] All images should be cached in memory and disk: AppDelegate has an instance of `NSURLCache` and `NSURLRequest` makes a request with `NSURLRequestReturnCacheDataElseLoad` cache policy. I tested this by turning off wifi and restarting the app.
 - [x] Add a tab bar for Box Office and DVD.
 
+#### Known Issues
+
+- Because I implemented AFNetworkReachabilityManager at the last minute to properly monitor when there's a network error or not, I did not fix cases where monitoring should be shut down. So this would normally cause battery issues probably.
+- Images fading in are done for all images, rather than only when images are being pulled from the network.
+
 ### Walkthrough
 The gif starts recording with wifi off.
 
