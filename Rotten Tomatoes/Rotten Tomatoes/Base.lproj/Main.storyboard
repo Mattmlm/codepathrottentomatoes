@@ -166,7 +166,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" alpha="0.20000000000000001" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SVp-mU-Qpp" userLabel="Movie Cover Image View">
-                                <rect key="frame" x="0.0" y="-49" width="600" height="536"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="487"/>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </imageView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1bA-Z4-R3b">
@@ -222,7 +222,6 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="SVp-mU-Qpp" firstAttribute="height" secondItem="Roy-cN-y95" secondAttribute="height" id="4Fi-ed-sdI"/>
                             <constraint firstItem="s9g-9Q-ms2" firstAttribute="top" secondItem="SVp-mU-Qpp" secondAttribute="bottom" id="6lt-iM-BMu"/>
                             <constraint firstItem="SVp-mU-Qpp" firstAttribute="leading" secondItem="Roy-cN-y95" secondAttribute="leading" id="94Z-XA-KVo"/>
                             <constraint firstItem="s9g-9Q-ms2" firstAttribute="top" secondItem="1bA-Z4-R3b" secondAttribute="bottom" id="PSf-Lm-kZr"/>
@@ -231,6 +230,7 @@
                             <constraint firstAttribute="trailing" secondItem="1bA-Z4-R3b" secondAttribute="trailing" id="gxQ-TU-c2y"/>
                             <constraint firstItem="1bA-Z4-R3b" firstAttribute="leading" secondItem="Roy-cN-y95" secondAttribute="leading" id="iqg-sU-7cL"/>
                             <constraint firstItem="nad-nu-ut3" firstAttribute="width" secondItem="Roy-cN-y95" secondAttribute="width" id="mLO-2V-EdT"/>
+                            <constraint firstItem="SVp-mU-Qpp" firstAttribute="top" secondItem="ZQk-vu-4IG" secondAttribute="bottom" id="u7R-rS-nOM"/>
                             <constraint firstItem="SVp-mU-Qpp" firstAttribute="width" secondItem="Roy-cN-y95" secondAttribute="width" id="ugj-15-l0f"/>
                         </constraints>
                     </view>
