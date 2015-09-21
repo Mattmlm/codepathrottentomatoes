@@ -8,6 +8,7 @@
 
 import UIKit
 import MBProgressHUD
+import AFNetworking
 
 class MovieTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
@@ -18,6 +19,7 @@ class MovieTableViewController: UIViewController, UITableViewDataSource, UITable
     var dataType: DataType?
     var movies: NSArray?
     var refreshControl: UIRefreshControl = UIRefreshControl()
+    var reachabilityManager = AFNetworkReachabilityManager.sharedManager()
     
     @IBOutlet weak var movieTableView: UITableView!
     @IBOutlet weak var errorView: UIView!
@@ -34,6 +36,9 @@ class MovieTableViewController: UIViewController, UITableViewDataSource, UITable
         self.refreshControl.addTarget(self, action: "onRefresh", forControlEvents: .ValueChanged)
         self.refreshControl.tintColor = UIColor.whiteColor()
         self.movieTableView.insertSubview(self.refreshControl, atIndex: 0)
+        
+        self.setUpMonitoringConnection()
+        self.reachabilityManager.startMonitoring()
         self.loadMovies()
     }
 
@@ -94,7 +99,9 @@ class MovieTableViewController: UIViewController, UITableViewDataSource, UITable
                 self.movies = []
             }
             }) { (error) -> Void in
-                self.errorView.hidden = false;
+                if error?.domain == "NSURLErrorDomain" {
+                    self.errorView.hidden = false;
+                }
                 MBProgressHUD.hideHUDForView(self.view, animated: true);
         }
     }
@@ -111,8 +118,23 @@ class MovieTableViewController: UIViewController, UITableViewDataSource, UITable
             }
             self.refreshControl.endRefreshing()
             }) { (error) -> Void in
-                self.errorView.hidden = false;
+                if error?.domain == "NSURLErrorDomain" {
+                    self.errorView.hidden = false;
+                }
                 self.refreshControl.endRefreshing()
+        }
+    }
+    
+    func setUpMonitoringConnection() {
+        self.reachabilityManager.setReachabilityStatusChangeBlock { (status) -> Void in
+            switch status {
+            case .Unknown:
+                self.errorView.hidden = false;
+            case .NotReachable:
+                self.errorView.hidden = false;
+            default:
+                self.errorView.hidden = true;
+            }
         }
     }
     
