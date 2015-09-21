@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import AFNetworking
 
 class MovieTableViewCell: UITableViewCell {
     
@@ -18,10 +17,20 @@ class MovieTableViewCell: UITableViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         self.movieCoverImageView.image = nil;
+        self.movieCoverImageView.alpha = 0.2;
+        self.movieTitleLabel.text = "";
+        self.movieDescriptionLabel.text = "";
     }
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews();
+        UIView.animateWithDuration(1) { () -> Void in
+            self.movieCoverImageView.alpha = 1;
+        }
     }
     
     override func setSelected(selected: Bool, animated: Bool) {

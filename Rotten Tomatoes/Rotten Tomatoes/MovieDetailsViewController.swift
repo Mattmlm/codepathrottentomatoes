@@ -23,6 +23,10 @@ class MovieDetailsViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         
+        UIView.animateWithDuration(2) { () -> Void in
+            self.movieCoverView.alpha = 1;
+        }
+        
         if self.movieData != nil {
             RTAPISupport.setMovieCover(self.movieCoverView, movieData: self.movieData!);
             if let title = RTAPISupport.getMovieTitle(self.movieData!) {
