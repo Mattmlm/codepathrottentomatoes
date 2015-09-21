@@ -23,6 +23,7 @@ Time spent: Around... 15 hours
 
 ### Walkthrough
 The gif starts recording with wifi off.
+
 ![Video Walkthrough](RottenTomatoes.gif)
 
 Credits
