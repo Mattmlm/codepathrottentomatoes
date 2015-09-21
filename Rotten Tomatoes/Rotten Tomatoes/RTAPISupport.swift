@@ -96,4 +96,16 @@ class RTAPISupport : NSObject {
         }
         return nil;
     }
+    
+    class func setMovieCover(imageView: UIImageView, movieData: NSDictionary) {
+        if let url = RTAPISupport.getMovieThumbnailImageURL(movieData) {
+            let request = NSURLRequest(URL: NSURL(string: url)!, cachePolicy: .ReturnCacheDataElseLoad, timeoutInterval: 216000) // Cache for a day
+            imageView.setImageWithURLRequest(request, placeholderImage: UIImage(named: "noposter"), success: { (request, response, image) -> Void in
+                imageView.image = image;
+                if let bigURL = RTAPISupport.getMovieBigImageURL(movieData) {
+                    imageView.setImageWithURL(NSURL(string: bigURL)!)
+                }
+                }, failure: nil)
+        }
+    }
 }

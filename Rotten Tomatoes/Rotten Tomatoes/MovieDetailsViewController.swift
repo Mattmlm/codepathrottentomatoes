@@ -24,9 +24,7 @@ class MovieDetailsViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         if self.movieData != nil {
-            if let url = RTAPISupport.getMovieBigImageURL(self.movieData!) {
-                self.movieCoverView.setImageWithURL(NSURL(string: url)!)
-            }
+            RTAPISupport.setMovieCover(self.movieCoverView, movieData: self.movieData!);
             if let title = RTAPISupport.getMovieTitle(self.movieData!) {
                 self.movieTitleLabel.text = title;
                 self.navigationItem.title = title;

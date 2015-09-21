@@ -58,11 +58,9 @@ class MovieTableViewController: UIViewController, UITableViewDataSource, UITable
         let cell = tableView.dequeueReusableCellWithIdentifier("Movie Cell", forIndexPath: indexPath);
         if let movieCell = cell as? MovieTableViewCell {
             if let movie = self.movies![indexPath.row] as? NSDictionary {
+                movieCell.setMovieCover(movie);
                 if let title = RTAPISupport.getMovieTitle(movie) {
                     movieCell.movieTitleLabel.text = title
-                }
-                if let url = RTAPISupport.getMovieBigImageURL(movie) {
-                    movieCell.setMovieCover(url);
                 }
                 if let description = RTAPISupport.getMovieSynopsis(movie) {
                     movieCell.movieDescriptionLabel.text = description;

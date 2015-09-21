@@ -30,8 +30,8 @@ class MovieTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func setMovieCover(imageURL: String) {
-        self.movieCoverImageView?.setImageWithURL(NSURL(string: imageURL)!)
+    func setMovieCover(movieData: NSDictionary) {
+        RTAPISupport.setMovieCover(self.movieCoverImageView, movieData: movieData);
     }
 }
 
